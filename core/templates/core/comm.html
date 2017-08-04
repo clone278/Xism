@@ -1,0 +1,43 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+
+	<!-- Comm (Single)
+	================================================== -->
+	<section id="archive">
+		<div class="container">
+
+			<div class="entry">
+
+				<div class="desktop-12 columns">
+					<img src="{{ comm.img_hero_src }}" alt="{{ comm.img_hero_title }}" />
+				</div><!-- // .desktop-12 -->
+
+				<div class="desktop-3 tablet-12 columns">
+					<div class="box-meta">
+						<span class="category">
+                            <a href="/blog/{{ comm.commtype }}">{{ comm.commtype }}</a>
+                        </span><br/>
+						<span class="date">{{ comm.post_date|date:"F d, Y" }}</span>
+					</div><!-- // .box-meta -->
+				</div><!-- // .desktop-3 -->
+
+				<div class="desktop-9 tablet-12 columns">
+					<div class="box-content">
+                        <h4>{{ comm.title }}</h4>
+
+						{{ comm.body|safe }}
+
+					</div><!-- // .box-content -->
+				</div><!-- // .desktop-9 -->
+
+				<div class="clear"></div>
+			</div><!-- // .entry -->
+
+		</div><!-- // .container -->
+	</section><!-- // section#archive -->
+
+
+
+{% endblock %}

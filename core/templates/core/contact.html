@@ -1,0 +1,98 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+<!-- Contact
+	================================================== -->
+	<section id="contact" class="section page">
+		<div class="container">
+
+			<div class="desktop-6 tablet-12 columns">
+
+				<h2 class="border-top">Contact</h2>
+				<p class="title-desc">Find Us Here</p>
+
+                {% if messages %}
+                    <div id="contact-warning">
+                        <ul class="messagelist">
+                            {% for message in messages %}
+                                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                                    {{ message}}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div><!-- // #contact-warning -->
+                {% endif %}
+
+
+				<form method="post" >
+                        {% csrf_token %}
+                        {{ form.as_table }}
+
+                        <br />
+						<label for="contactCaptcha"><strong>10</strong> + <strong>6</strong> = <span class="required">*</span></label>
+						<input name="contactCaptcha" type="text" id="contactCaptcha" size="30" value="" />
+
+						<input name="contactCaptchaAnswer" type="hidden" id="contactCaptchaAnswer" value="16" />
+
+						<br />
+						<label class="placeholder">&nbsp;</label>
+						<input type="submit" class="button full" value="Submit" />
+				</form>
+
+				<div class="clear"></div>
+
+			</div><!-- // .desktop-6 -->
+
+
+			<div class="desktop-6 tablet-12 nested columns">
+
+				<div class="desktop-6 tablet-12 columns">
+					<h2 class="border-top">Location</h2>
+					<p class="title-desc">At the heart of Chicago</p>
+
+					<div id="map"></div>
+				</div><!-- // .desktop-6 -->
+
+				<div class="clear"></div>
+
+				<div class="desktop-3 tablet-6 mobile-half columns">
+
+					<div class="box-contact">
+						<h3 class="font-color-primary"><span class="underline">Address</span></h3>
+
+						<p>
+							66 Turners Falls Rd <br />
+							Turners Falls, MA 01376<br />
+							(413) 863-1324
+						</p>
+					</div><!-- // .box-contact -->
+
+				</div><!-- // .desktop-3 -->
+
+				<div class="desktop-3 tablet-6 mobile-half columns">
+
+					<div class="box-contact">
+						<h3 class="font-color-primary"><span class="underline">Email</span></h3>
+
+						<p>
+							<a href="mailto:typebig@gmail.com">typebig@gmail.com</a>
+						</p>
+					</div><!-- // .box-contact -->
+
+				</div><!-- // .desktop-3 -->
+
+				<div class="clear"></div>
+
+			</div><!-- // .desktop-6 -->
+
+		</div><!-- // .container -->
+	</section><!-- // section#contact -->
+
+
+{% endblock %}
+
+    {% block bodyscripts %}
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false&amp;key=AIzaSyCkP7DM8dsc9Z6x1f1p093ZQHjQY_kmVhk"></script>
+	    <script src = "/static/core/js/googleMapStyle.js"></script>
+    {% endblock %}

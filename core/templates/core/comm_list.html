@@ -1,0 +1,90 @@
+
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+
+    <!-- Comms
+	================================================== -->
+	<section id="archive">
+		<div class="container">
+
+        {% for comm in comms %}
+
+
+			<div class="entry">
+
+				<div class="desktop-12 columns">
+					<a href="/blog/{{ comm.id }}" class="permalink">
+						<img src="{{ comm.img_thumb_src }}" alt="{{ comm.img_thumb_title }}" />
+					</a><!-- // PERMALINK -->
+				</div><!-- // .desktop-12 -->
+
+
+
+				<div class="desktop-3 tablet-12 columns">
+					<div class="box-meta">
+						<span class="category">
+                            <a href="/blog/{{ comm.commtype }}">{{ comm.commtype }}</a>
+                        </span><br />
+						<span class="date">{{ comm.post_date }}</span>
+					</div><!-- // .box-meta -->
+				</div><!-- // .desktop-3 -->
+
+
+				<div class="desktop-9 tablet-12 nested columns">
+					<div class="desktop-9 tablet-12 columns">
+						<a href="/blog/{{ comm.id }}" class="permalink">
+							<div class="box-content">
+								<h4>{{ comm.title }}</h4>
+                                <p class="excerpt">{{ comm.excerpt|safe }}</p>
+                            </div>
+						</a><!-- // PERMALINK -->
+					</div><!-- // .desktop-9 -->
+
+					<div class="clear"></div>
+
+					<div class="box-tags">
+						<div class="desktop-1 tablet-2 columns">
+							<h5>Tags</h5>
+						</div><!-- // .desktop-3 columns -->
+
+						<div class="desktop-8 tablet-10 columns">
+							<p class="tags">
+                                {% for tag in comm.tags.all %}
+								<a href="/blog/tag/{{ tag.title }}">{{ tag.title }}</a>
+                                {% endfor %}
+							</p><!-- // p.tags -->
+						</div><!-- // .desktop-6 -->
+					</div><!-- // .box-tags -->
+
+				</div><!-- // .desktop-9 .nested -->
+
+				<div class="clear"></div>
+			</div><!-- // .entry -->
+
+
+        {% endfor %}
+
+			<div class="desktop-12 columns">
+					<div class="nav-pages">
+						<a href="#" title="Previous" class="link-prev">
+							<div>
+								<span>Previous</span>
+							</div>
+						</a><!-- // .link-prev -->
+
+						<a href="#" title="Next" class="link-next">
+							<div>
+								<span>Next</span>
+							</div>
+						</a><!-- // .link-next -->
+
+						<div class="clear"></div>
+					</div><!-- // .nav-pages -->
+            </div><!-- // .desktop-12 -->
+
+		</div><!-- // .container -->
+	</section><!-- // section#archive -->
+
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+
+	<!-- Work - Single Page (Left Sidebar)
+	================================================== -->
+	<section id="works" class="page single">
+		<div class="container">
+
+			<div class="desktop-3 tablet-12 nested columns">
+
+				<div class="sidebar sticky">
+
+					<div class="desktop-3 tablet-12 columns">
+
+						<div class="box-info">
+							<h3 class="border-top">{{ work.title }}</h3>
+							<p class="project-desc">{{ work.start_date|date:"F Y" }}</p>
+
+							<p>{{ work.short_desc }}</p>
+						</div><!-- // .box-info -->
+
+					</div><!-- // .desktop-3 -->
+
+					<div class="desktop-3 tablet-6 mobile-half columns">
+
+						<div class="box-info">
+                            {% if work.categories != None %}
+							<h4 class="border-top">Category</h4>
+							<ul>
+								{% for category in work.categories.all %}
+                                    <li>{{ category }}</li>
+                                {% endfor %}
+							</ul>
+                            {% endif %}
+
+						</div><!-- // .box-info -->
+
+					</div><!-- // .desktop-3 -->
+
+					<div class="desktop-3 tablet-6 mobile-half columns">
+
+						<div class="box-info">
+							<h4 class="border-top">Client</h4>
+							<p>{{ work.client }}</p>
+						</div><!-- // .box-info -->
+
+					</div><!-- // .desktop-3 -->
+
+					<div class="clear"></div>
+
+				</div><!-- // .sticky -->
+
+			</div><!-- // .desktop-3 .nested -->
+
+			<div class="desktop-9 tablet-12 columns">
+
+                {{ work.long_desc|safe }}
+
+                <br/>
+
+                {% if work.img1_src != '' %}
+				    <img src="{{ work.img1_src }}" alt="{{ work.img1_title }}" />
+                {% endif %}
+                {% if work.img2_src != '' %}
+				    <img src="{{ work.img2_src }}" alt="{{ work.img2_title }}" />
+                {% endif %}
+                {% if work.img3_src != '' %}
+				    <img src="{{ work.img3_src }}" alt="{{ work.img3_title }}" />
+                {% endif %}
+
+			</div><!-- // .desktop-9 -->
+
+			<div class="clear"></div>
+
+		</div><!-- // .container -->
+	</section><!-- // section -->
+
+
+
+
+{% endblock %}

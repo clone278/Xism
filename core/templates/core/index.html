@@ -1,0 +1,42 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+
+ <!-- Works
+	================================================== -->
+	<section id="works">
+		<div class="container">
+			<div class="desktop-12 columns">
+                <div class="border-top"></div>
+            </div>
+
+
+                {% for work in works %}
+
+
+
+                    <a href="/work/{{ work.id }}" class="permalink">
+                        <div class="desktop-3 mobile-half columns">
+                            <div class="item first-row">
+                                <h3>{{ work.title }}</h3>
+                                <span class="category">{{ work.category }}</span>
+
+                                <img src="{{ work.img_thumb_src }}" alt="{{ work.img_thumb_title }}" />
+                            </div><!-- // .item -->
+                        </div><!-- // .desktop-3 -->
+                    </a>
+
+                    {% if forloop.counter|divisibleby:4 %}
+                        <div class="clear"></div>
+                    {% endif %}
+
+                {% endfor %}
+
+
+
+
+		</div><!-- // .container -->
+	</section><!-- // section#works -->
+
+{% endblock %}

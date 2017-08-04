@@ -1,0 +1,36 @@
+
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+
+
+
+        <!-- Works (Two Columns)
+	================================================== -->
+	<section id="works" class="">
+		<div class="container">
+
+            {% for work in works %}
+
+                <a href="/work/{{ work.id }}" class="permalink">
+                    <div class="desktop-6 columns">
+                        <div class="item">
+                            <img src="{{ work.img_gallery_src }}" alt="{{ work.img_gallery_title }}"  />
+
+                            <h3>{{ work.title }}</h3>
+                            <span class="category">{{ work.category }}</span>
+                        </div><!-- // .item -->
+                    </div><!-- // .desktop-6 -->
+                </a>
+
+                {% if forloop.counter|divisibleby:2 %}
+                    <div class="clear"></div>
+                {% endif %}
+
+            {% endfor %}
+
+		</div><!-- // .container -->
+	</section><!-- // section#works -->
+
+{% endblock %}

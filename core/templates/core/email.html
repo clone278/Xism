@@ -1,0 +1,30 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+    <h1>Contact Us</h1>
+
+
+    {% if messages %}
+        <div id="contact-warning">
+            <ul class="messagelist">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                        {{ message}}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div><!-- // #contact-warning -->
+    {% endif %}
+
+    <form method="post">
+        <fieldset>
+            {% csrf_token %}
+            {{ form.as_table }}
+            <div class="form-actions">
+              <button type="submit">Send</button>
+            </div>
+        </fieldset>
+    </form>
+
+{% endblock %}
