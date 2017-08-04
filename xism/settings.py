@@ -25,7 +25,7 @@ SECRET_KEY = '#^9n)xvy_azt9y&%ado2_&7(3c$$8+9c12#q%yvxqwte1^n2nv'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.xism.nz']
 
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'email-smtp.us-west-2.amazonaws.com'
